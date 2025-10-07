@@ -1,0 +1,124 @@
+
+import java.util.*;
+class hashkey{
+    int size=10;
+    int[] table;
+
+   public hashkey(){
+        table=new int[size];
+        for(int i =0 ;i<size;i++){
+            table[i]=-1;
+        }
+    }
+
+    public int Hashindex(int key){
+        return key%size;
+    }
+
+    public void insert(int key){
+
+        int index = Hashindex(key);
+
+        if(table[index]==-1){
+            table[index]=key;
+            return;
+        }
+        else{
+            int start = index;
+            do{
+                index=(index+1)%size;
+            }while(table[index]!=-1 && start!=index);
+
+        if(table[index]==-1){
+            table[index]=key;
+            return;
+        }
+        else{
+            System.out.println("Hashtable is full");
+            return;
+        }
+        }
+
+    }
+
+    public void search(int key){
+        int index = Hashindex(key);
+        int start = index;
+        
+        while (table[index]!=-1){
+            if(table[index]==key){
+                System.out.println("index is :"+index);
+                return;
+            }
+            else{
+                index=(index+1)%size;
+                if(table[index]==key){
+                    System.out.println("index is :"+index);
+                    return;
+                }
+                else{
+                    System.out.println("/nNot found.");
+
+                }
+            }
+        }
+    }
+
+    public void display(){
+        for(int i = 0 ;i<size;i++){
+            System.out.print(table[i]+" ");
+        }
+        return;
+    }
+
+    public void Delete(int index){
+        table[index]=-1;
+        return;
+    }
+
+    public void exit(){
+        return;
+    }
+
+}
+
+
+
+
+
+
+public class hashfun {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+
+        // boolean start = true;
+        // while(start){
+        //     System.out.println("/n1. insert");
+        //     System.out.println("2. Delete");
+        //      System.out.println("3.search")
+        //     System.out.println("3. Display");
+        //     System.out.println("4. Exit");
+
+
+
+
+
+        //     switch(choice)
+        // }
+
+
+        hashkey hk = new hashkey();
+        hk.insert(5);
+        hk.display();
+        hk.search(5);
+        
+
+
+
+
+        
+        
+    }
+    
+}
